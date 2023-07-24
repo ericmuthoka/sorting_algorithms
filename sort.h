@@ -18,17 +18,6 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-/**
- * enum bool - Boolean values enumeration
- * @false: is 0.
- * @true: is 1.
- */
-typedef enum bool
-{
-	false = 0,
-	true
-} bool;
-
 void print_list(const listint_t *list);
 void print_array(const int *array, size_t size);
 void bubble_sort(int *array, size_t size);
