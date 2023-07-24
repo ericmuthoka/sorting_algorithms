@@ -1,55 +1,48 @@
 #include "sort.h"
 
 /**
- * swap - Swaps two integer values.
+ * swap_ints - Swaps two integers in an array.
+ * @a: Pointer to the first integer to swap.
+ * @b: Pointer to the second integer to swap.
  *
- * @a: Pointer to the first integer.
- * @b: Pointer to the second integer.
+ * Description: Swaps the values of two integers in the array.
  */
-void swap(int *a, int *b)
+void swap_ints(int *a, int *b)
 {
-	int temp = *a;
+	int tmp = *a;
 	*a = *b;
-	*b = temp;
+	*b = tmp;
 }
 
 /**
- * bubble_sort - Sorts an integer array in ascending order by Bubble sort.
+ * bubble_sort - Sorts an array of integers in ascending order using Bubble sort.
+ * @array: Pointer to the array of integers to be sorted.
+ * @size: Number of elements in the array.
  *
- * @array: The array to be sorted.
- * @size: Number of elements in @array.
+ * Description: Implements the Bubble sort algorithm to arrange the array
+ * in ascending order. After each swap, the array is printed to visualize the sorting process.
  */
 void bubble_sort(int *array, size_t size)
 {
-	if (array == NULL || size <= 1)
+	size_t i, len = size;
+	bool bubbly = false;
+
+	if (array == NULL || size < 2)
 		return;
 
-	int swapped;
-	size_t i, j;
-
-	for (i = 0; i < size - 1; i++) /* Outer loop: Pass through the array */
+	while (!bubbly)
 	{
-		swapped = 0; /* Initialize a flag to track if any swaps */
-
-		for (j = 0; j < size - i - 1; j++) /* Compare adjacent elements */
+		bubbly = true;
+		for (i = 0; i < len - 1; i++)
 		{
-			if (array[j] > array[j + 1]) /* If current element is greater */
+			if (array[i] > array[i + 1])
 			{
-				/* Swap the elements */
-				swap(&array[j], &array[j + 1]);
-				swapped = 1; /* Set the flag to indicate a swap was made */
-
-				/* Print the array after each swap */
-				printf("After swapping: ");
-				for (size_t k = 0; k < size; k++)
-					printf("%d ", array[k]);
-				printf("\n");
+				swap_ints(array + i, array + i + 1);
+				print_array(array, size);
+				bubbly = false;
 			}
 		}
-
-		/* If no swaps were made in this pass, the array is already sorted */
-		if (!swapped)
-			break;
+		len--;
 	}
 }
 
