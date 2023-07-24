@@ -18,14 +18,6 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
-typedef enum kind_e
-{
-	SPADE = 0,
-	HEART,
-	CLUB,
-	DIAMOND
-} kind_t;
-
 /**
  * struct card_s - Playing card
  *
@@ -52,7 +44,11 @@ typedef struct deck_node_s
 	struct deck_node_s *prev;
 	struct deck_node_s *next;
 } deck_node_t;
-
+/**
+ * enum bool - Boolean values enumeration
+ * @false: is 0.
+ * @true: is 1.
+ */
 typedef enum bool
 {
 	false = 0,
